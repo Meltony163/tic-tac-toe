@@ -1,7 +1,18 @@
 #include<stdio.h>
+
+/**
+ * @file output.h
+ * @author Moamen eltony
+ * @brief This file contains functions that deal with output.
+ * @version 0.1
+ * @date 2023-11-10
+ */
+ 
+ 
 /**
  *brief :Use this function to print Initial list.
  */
+ 
 void IOUT_vPrintList(short int cpy_nFlag)
 {
 	system("@cls||clear");
@@ -15,10 +26,12 @@ void IOUT_vPrintList(short int cpy_nFlag)
     printf("3:EXIT\n");
     printf("Your Choice:");
 }
+
 /**
  *brief :Use this function to print board.
  *@param cpy_aBoard:2d array represinting board.
  */
+ 
 void IOUT_vPrintBoard(char cpy_aBoard[][3])
 {
 	system("@cls||clear");
@@ -38,15 +51,24 @@ void IOUT_vPrintBoard(char cpy_aBoard[][3])
         printf("\n");
     }
 }
+
 /**
- *brief :Use this function to print the name of the player.
+ *brief :Use this function to print the name of the player and his symbol.
  *@param *ptr_aName:char pointer represinting the name of player.
  */
+ 
 void IOUT_vPrintTurn(char *ptr_aName,char cpy_cSymbol)
 {
     printf("%s's(%c) turn\n",ptr_aName,cpy_cSymbol);
     printf("Choose Valid Place or choose 0 to exit:");
 }
+
+/**
+ *brief :Use this function to make sure user enter valid position.
+ *@param cpy_aBoard:2d array represinting board.
+ *@param cpy_cValue:symbol to put in board
+ */
+ 
 char IOUT_cTakeInput(char cpy_aBoard[][3],char cpy_cValue)
 {
 	char Loc_cPlace;
@@ -68,6 +90,11 @@ char IOUT_cTakeInput(char cpy_aBoard[][3],char cpy_cValue)
 	cpy_aBoard[(int)((int)(Loc_cPlace-'1')/3)][(int)(Loc_cPlace-'1')%3]=cpy_cValue;
 	return Loc_cPlace;
 }
+
+/**
+ *brief :Use this function to print singleplayer list.
+ */
+ 
 void IOUT_vSinglePlayerMode(short int cpy_nFlag)
 {
 	system("@cls||clear");
@@ -81,6 +108,11 @@ void IOUT_vSinglePlayerMode(short int cpy_nFlag)
     printf("3:Main List\n");
 	printf("Your Choice:");
 }
+
+/**
+ *brief :Use this function to ask the user if he want to play again.
+ */
+ 
 void IOUT_vPlayAgain(short int cpy_nFlag)
 {
 	if(cpy_nFlag)

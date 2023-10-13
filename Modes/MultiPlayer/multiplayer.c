@@ -2,8 +2,23 @@
 #include"../../MemoryManagement/memory_management.h"
 #include"../../Logic/logic.h"
 #include"../../UserInterface/input_output.h"
+
+/**
+ * @file multiplayer.h
+ * @author Moamen eltony
+ * @brief This file contains functions that deal with multiplayermode
+ * @version 0.1
+ * @date 2023-11-10
+ */
+ 
+ 
 enum BOOL{False,True};
 typedef enum BOOL bool;
+
+/**
+ *brief :Use this function to get multiplayer mode
+ */
+ 
 void MOMT_vMultiplayerMode()
 {
     char board[3][3];

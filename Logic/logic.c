@@ -1,8 +1,24 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include"../UserInterface/input_output.h"
+
+/**
+ * @file logic.h
+ * @author Moamen eltony
+ * @brief This file contains functions that deal with logic of the game.
+ * @version 0.1
+ * @date 2023-11-10
+ */
+ 
+ 
 enum BOOL{False,True};
 typedef enum BOOL bool;
+
+/**
+ *brief :Use this function to put numbers on the board.
+ *@param cpy_aBoard:2d array represinting game board
+ */
+ 
 void LOGC_vInitBoard(char cpy_aBoard[][3])
 {
 	char temb='1';
@@ -15,6 +31,12 @@ void LOGC_vInitBoard(char cpy_aBoard[][3])
 		}
 	}
 }
+
+/**
+ *brief :Use this function to check if someone wins.
+ *@param cpy_aBoard:2d array represinting game board
+ */
+ 
 int LOGC_Win(char cpy_aBoard[][3])
 {
 	bool flag=True;
@@ -60,10 +82,25 @@ int LOGC_Win(char cpy_aBoard[][3])
 	}
 	return 0;
 }
+
+/**
+ *brief :Use this function to put X or Y in position on board
+ *@param cpy_aBoard:2d array represinting game board
+ *@param cpy_cValue:Value to put in board (X or Y)
+ *@param cpy_cPosition:locatioin in board
+ */
+ 
 void LOGC_vPutInput(char cpy_aBoard[][3],char cpy_cValue,char cpy_cPosition)
 {
 	cpy_aBoard[(int)((int)(cpy_cPosition-'1')/3)][(int)(cpy_cPosition-'1')%3]=cpy_cValue;
 }
+
+/**
+ *brief :Use this function to check if there is a position where I put O and win.
+ *@param cpy_aBoard:2d array represinting game board
+ *@return :char representing the location or N if there is not
+ */
+ 
 char LOGC_cAlmostWinO(char cpy_aBoard[][3])
 {
 	char Loc_cPosition;
@@ -185,6 +222,13 @@ char LOGC_cAlmostWinO(char cpy_aBoard[][3])
 	}
 	return 'N';
 }
+
+/**
+ *brief :Use this function to check if there is a position where I put X and win.
+ *@param cpy_aBoard:2d array represinting game board
+ *@return :char representing the location or N if there is not
+ */
+ 
 char LOGC_cAlmostWinX(char cpy_aBoard[][3])
 {
 	char Loc_cPosition;
@@ -306,6 +350,13 @@ char LOGC_cAlmostWinX(char cpy_aBoard[][3])
 	}
 	return 'N';
 }
+
+/**
+ *brief :Use this function to get an unused random position on the board.
+ *@param cpy_aBoard:2d array represinting game board
+ *@return :char representing the location
+ */
+ 
 char LOGC_cRandomPosition(char cpy_aBoard[][3])
 {
 	short int Loc_nNum=0;
@@ -335,6 +386,12 @@ char LOGC_cRandomPosition(char cpy_aBoard[][3])
 		}
 	}
 }
+
+/**
+ *brief :Use this function to ask the user if he wants to play again.
+ *@return :1 if YES 0 if NO
+ */
+ 
 int LOGC_nPlayAgain()
 {
 	int Loc_nChoice;
@@ -351,6 +408,12 @@ int LOGC_nPlayAgain()
     }
 	return 1;
 }
+
+/**
+ *brief :Use this function to make the user choose between two modes in single-player mode or to exit.
+ *@return :user's choice
+ */
+ 
 int LOGC_nSinglePlayerMode()
 {
 	int Loc_nChoice;
@@ -363,6 +426,12 @@ int LOGC_nSinglePlayerMode()
     }
 	return Loc_nChoice;
 }
+
+/**
+ *brief :Use this function to make the user choose between two modes in main list or to exit.
+ *@return :user's choice
+ */
+ 
 int LOGC_nMainList()
 {
 	int Loc_nChoice;

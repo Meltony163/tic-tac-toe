@@ -4,10 +4,25 @@
 #include"../../UserInterface/input_output.h"
 enum BOOL{False,True};
 typedef enum BOOL bool;
+
+/**
+ * @file singleplayer.h
+ * @author Moamen eltony
+ * @brief This file contains functions that deal with singleplayer mode.
+ * @version 0.1
+ * @date 2023-11-12
+ */
+ 
+ 
 /*
 Player O
 System X
 */
+
+/**
+ *brief :Use this function to get singleplayer mode
+ */
+ 
 void MOSP_vHardMODE()
 {
 	char *Loc_ptr_pPlayer1;
