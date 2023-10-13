@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include"../UserInterface/input_output.h"
 enum BOOL{False,True};
 typedef enum BOOL bool;
 void LOGC_vInitBoard(char cpy_aBoard[][3])
@@ -333,4 +334,44 @@ char LOGC_cRandomPosition(char cpy_aBoard[][3])
 			}
 		}
 	}
+}
+int LOGC_nPlayAgain()
+{
+	int Loc_nChoice;
+	IOUT_vPlayAgain(0);
+	scanf("%d",&Loc_nChoice);
+    while((Loc_nChoice!=1)&&(Loc_nChoice!=0))
+	{
+		IOUT_vPlayAgain(1);
+		scanf("%d",&Loc_nChoice);
+    }
+	if(Loc_nChoice==0)
+    {
+		return 0;
+    }
+	return 1;
+}
+int LOGC_nSinglePlayerMode()
+{
+	int Loc_nChoice;
+	IOUT_vSinglePlayerMode(0);
+    scanf("%d",&Loc_nChoice);
+    while((Loc_nChoice!=1)&&(Loc_nChoice!=2)&&(Loc_nChoice!=3))
+    {
+		IOUT_vSinglePlayerMode(1);
+        scanf("%d",&Loc_nChoice);
+    }
+	return Loc_nChoice;
+}
+int LOGC_nMainList()
+{
+	int Loc_nChoice;
+	IOUT_vPrintList(0);
+    scanf("%d",&Loc_nChoice);
+    while((Loc_nChoice!=1)&&(Loc_nChoice!=2)&&(Loc_nChoice!=3))
+    {
+		IOUT_vPrintList(1);
+        scanf("%d",&Loc_nChoice);
+    }
+	return Loc_nChoice;
 }

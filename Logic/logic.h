@@ -13,4 +13,10 @@ char LOGC_cAlmostWinX(char cpy_aBoard[][3]);
 char LOGC_cAlmostWinO(char cpy_aBoard[][3]);
 
 char LOGC_cRandomPosition(char cpy_aBoard[][3]);
+
+int LOGC_nMainList();
+
+int LOGC_nSinglePlayerMode();
+
+int LOGC_nPlayAgain();
 #endif

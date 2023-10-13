@@ -13,6 +13,7 @@ void MOMT_vMultiplayerMode()
     char *Loc_ptr_pPlayer2;
     MEMN_vAllocatePlayerName(&Loc_ptr_pPlayer1);
     MEMN_vAllocatePlayerName(&Loc_ptr_pPlayer2);
+	system("@cls||clear");
     printf("Enter Player1 Name:");
     scanf(" %49[^\n]", Loc_ptr_pPlayer1);
     MEMN_vResizePlayerName(&Loc_ptr_pPlayer1);
@@ -24,8 +25,8 @@ void MOMT_vMultiplayerMode()
 		IOUT_vPrintBoard(board);
         if(flag)
         {
-			IOUT_vPrintTurn(Loc_ptr_pPlayer1);
-			if(IOUT_cTakeInput(board,'O')=='0')
+			IOUT_vPrintTurn(Loc_ptr_pPlayer1,'X');
+			if(IOUT_cTakeInput(board,'X')=='0')
 			{
 				return;
 			}
@@ -33,7 +34,7 @@ void MOMT_vMultiplayerMode()
         }
         else
         {
-			IOUT_vPrintTurn(Loc_ptr_pPlayer2);
+			IOUT_vPrintTurn(Loc_ptr_pPlayer2,'O');
 			if(IOUT_cTakeInput(board,'O')=='0')
 			{
 				return;
@@ -45,15 +46,15 @@ void MOMT_vMultiplayerMode()
 			IOUT_vPrintBoard(board);
             if(flag)
             {
-                printf("%s won",Loc_ptr_pPlayer2);
+                printf("%s won\n",Loc_ptr_pPlayer2);
                 return;
             }
             else
             {
-                printf("%s won",Loc_ptr_pPlayer1);
+                printf("%s won\n",Loc_ptr_pPlayer1);
                 return;
             }
         }
     }
-    printf("DRAW");
+    printf("DRAW\n");
 }

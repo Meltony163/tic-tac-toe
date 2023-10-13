@@ -21,7 +21,7 @@ void MOSP_vHardMODE()
     LOGC_vInitBoard(board);
 	board[2][2]='X';
 	IOUT_vPrintBoard(board);
-	IOUT_vPrintTurn(Loc_ptr_pPlayer1);
+	IOUT_vPrintTurn(Loc_ptr_pPlayer1,'O');
     if(IOUT_cTakeInput(board,'O')=='0')
 	{
 		return;
@@ -34,7 +34,7 @@ void MOSP_vHardMODE()
 			if(flag)
 			{
 				IOUT_vPrintBoard(board);
-				IOUT_vPrintTurn(Loc_ptr_pPlayer1);
+				IOUT_vPrintTurn(Loc_ptr_pPlayer1,'O');
 				if(IOUT_cTakeInput(board,'O')=='0')
 				{
 					return;
@@ -56,12 +56,12 @@ void MOSP_vHardMODE()
 			if(LOGC_Win(board))
 			{
 				IOUT_vPrintBoard(board);
-				printf("HAHA I WON");
+				printf("HAHA I WON\n");
 				return;
 			}
 			flag=!flag;
 		}
-		printf("DRAW");
+		printf("DRAW\n");
 	}
 	else
 	{
@@ -91,7 +91,7 @@ void MOSP_vHardMODE()
 		}
 		LOGC_vPutInput(board,'X',Loc_cFirst);
 		IOUT_vPrintBoard(board);
-		IOUT_vPrintTurn(Loc_ptr_pPlayer1);
+		IOUT_vPrintTurn(Loc_ptr_pPlayer1,'O');
 		if(IOUT_cTakeInput(board,'O')=='0')
 		{
 			return;
@@ -100,19 +100,19 @@ void MOSP_vHardMODE()
 		{
 			LOGC_vPutInput(board,'X',LOGC_cAlmostWinX(board));
 			IOUT_vPrintBoard(board);
-			printf("HAHA I WON");
+			printf("HAHA I WON\n");
 			return;
 		}
 		LOGC_vPutInput(board,'X',Loc_cSecond);
 		IOUT_vPrintBoard(board);
-		IOUT_vPrintTurn(Loc_ptr_pPlayer1);
+		IOUT_vPrintTurn(Loc_ptr_pPlayer1,'O');
 		if(IOUT_cTakeInput(board,'O')=='0')
 		{
 			return;
 		}
 		LOGC_vPutInput(board,'X',LOGC_cAlmostWinX(board));
 		IOUT_vPrintBoard(board);
-		printf("HAHA I WON");
+		printf("HAHA I WON\n");
 		return;
 	}
 }
@@ -136,7 +136,7 @@ void MOSP_vEasyMode()
 		if(flag)
 		{
 			IOUT_vPrintBoard(board);
-			IOUT_vPrintTurn(Loc_ptr_pPlayer1);
+			IOUT_vPrintTurn(Loc_ptr_pPlayer1,'X');
 			if(IOUT_cTakeInput(board,'X')=='0')
 			{
 				return;
@@ -151,19 +151,19 @@ void MOSP_vEasyMode()
 			if(flag)
 			{
 				IOUT_vPrintBoard(board);
-				printf("%s won",Loc_ptr_pPlayer1);
+				printf("%s won\n",Loc_ptr_pPlayer1);
 				return;
 			}
 			else
 			{
 				IOUT_vPrintBoard(board);
-				printf("HAHA I WON");
+				printf("HAHA I WON\n");
 				return;
 			}
 		}
 		flag=!flag;
 	}
 	IOUT_vPrintBoard(board);
-	printf("DRAW");
+	printf("DRAW\n");
 	return;
 }
