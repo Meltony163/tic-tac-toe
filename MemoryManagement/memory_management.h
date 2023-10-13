@@ -7,7 +7,7 @@
  * @version 0.1
  * @date 2023-11-10
  */
-void DMMN_vAllocatePlayerName(char **ptr_aName);
+void MEMN_vAllocatePlayerName(char **ptr_aName);
 
-void DMMN_vResizePlayerName(char **ptr_aName);
+void MEMN_vResizePlayerName(char **ptr_aName);
 #endif

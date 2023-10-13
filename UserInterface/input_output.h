@@ -7,7 +7,12 @@
  * @version 0.1
  * @date 2023-11-10
  */
-void OUT_vPrintList();
-void OUT_vPrintBoard(char cpy_aBoard[][3]);
-void OUT_vPrintTurn(char *ptr_aName);
+char IOUT_cTakeInput(char cpy_aBoard[][3],char cpy_cValue);
+
+void IOUT_vPrintTurn(char *ptr_aName);
+
+void IOUT_vPrintBoard(char cpy_aBoard[][3]);
+
+void IOUT_vPrintList();
+
 #endif

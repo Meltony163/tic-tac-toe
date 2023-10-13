@@ -1,16 +1,11 @@
 #include<stdio.h>
 #include"../../MemoryManagement/memory_management.h"
 #include"../../Logic/logic.h"
-#include"../../Output/output.h"
+#include"../../UserInterface/input_output.h"
 enum BOOL{False,True};
 typedef enum BOOL bool;
-/*
-Player1 X
-Player2 O
-*/
 void MOMT_vMultiplayerMode()
 {
-    short int Loc_nC=0;
     char board[3][3];
     LOGC_vInitBoard(board);
     bool flag=True;
@@ -26,22 +21,28 @@ void MOMT_vMultiplayerMode()
     MEMN_vResizePlayerName(&Loc_ptr_pPlayer2);
     for(int i=0;i<9;i++)
     {
-		OUT_vPrintBoard(board);
+		IOUT_vPrintBoard(board);
         if(flag)
         {
-			OUT_vPrintTurn(Loc_ptr_pPlayer1);
-            LOGC_vTakeInput(board,'X');
+			IOUT_vPrintTurn(Loc_ptr_pPlayer1);
+			if(IOUT_cTakeInput(board,'O')=='0')
+			{
+				return;
+			}
             flag=!flag;
         }
         else
         {
-			OUT_vPrintTurn(Loc_ptr_pPlayer2);
-            LOGC_vTakeInput(board,'O');
+			IOUT_vPrintTurn(Loc_ptr_pPlayer2);
+			if(IOUT_cTakeInput(board,'O')=='0')
+			{
+				return;
+			}
             flag=!flag;
         }
         if(LOGC_Win(board))
         {
-			OUT_vPrintBoard(board);
+			IOUT_vPrintBoard(board);
             if(flag)
             {
                 printf("%s won",Loc_ptr_pPlayer2);

@@ -1,1 +1,1 @@
-gcc main.c Output/output.c MemoryManagement/memory_management.c Logic/logic.c Modes/MultiPlayer/multiplayer.c Modes/SinglePlayer/singleplayer.c -o game.exe
+gcc main.c UserInterface/input_output.c MemoryManagement/memory_management.c Logic/logic.c Modes/MultiPlayer/multiplayer.c Modes/SinglePlayer/singleplayer.c -o game.exe

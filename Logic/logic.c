@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include<stdlib.h>
 enum BOOL{False,True};
 typedef enum BOOL bool;
 void LOGC_vInitBoard(char cpy_aBoard[][3])
@@ -57,18 +58,6 @@ int LOGC_Win(char cpy_aBoard[][3])
 		return 1;
 	}
 	return 0;
-}
-void LOGC_vTakeInput(char cpy_aBoard[][3],char cpy_cValue)
-{
-	char Loc_cPlace;
-	scanf(" %c",&Loc_cPlace);
-	while(cpy_aBoard[(int)((int)(Loc_cPlace-'1')/3)][(int)(Loc_cPlace-'1')%3]!=Loc_cPlace)
-	{
-		printf("Wrong Place\n");
-		printf("Enter Valid Place:");
-		scanf(" %c",&Loc_cPlace);
-	}
-	cpy_aBoard[(int)((int)(Loc_cPlace-'1')/3)][(int)(Loc_cPlace-'1')%3]=cpy_cValue;
 }
 void LOGC_vPutInput(char cpy_aBoard[][3],char cpy_cValue,char cpy_cPosition)
 {
@@ -315,4 +304,33 @@ char LOGC_cAlmostWinX(char cpy_aBoard[][3])
 		return Loc_cPosition;
 	}
 	return 'N';
+}
+char LOGC_cRandomPosition(char cpy_aBoard[][3])
+{
+	short int Loc_nNum=0;
+	for(int i=0;i<3;i++)
+	{
+		for(int j=0;j<3;j++)
+		{
+			if((cpy_aBoard[i][j]!='X')&&(cpy_aBoard[i][j]!='O'))
+			{
+				Loc_nNum++;
+			}
+		}
+	}
+	Loc_nNum=rand()%Loc_nNum;
+	for(int i=0;i<3;i++)
+	{
+		for(int j=0;j<3;j++)
+		{
+			if((cpy_aBoard[i][j]!='X')&&(cpy_aBoard[i][j]!='O'))
+			{
+				if(Loc_nNum==0)
+				{
+					return cpy_aBoard[i][j];
+				}
+				Loc_nNum--;
+			}
+		}
+	}
 }

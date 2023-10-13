@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include"../../MemoryManagement/memory_management.h"
 #include"../../Logic/logic.h"
-#include"../../Output/output.h"
+#include"../../UserInterface/input_output.h"
 enum BOOL{False,True};
 typedef enum BOOL bool;
 /*
@@ -12,7 +12,7 @@ void MOSP_vHardMODE()
 {
 	char *Loc_ptr_pPlayer1;
     MEMN_vAllocatePlayerName(&Loc_ptr_pPlayer1);
-    printf("Enter Player1 Name:");
+    printf("Enter Your Name:");
     scanf(" %49[^\n]", Loc_ptr_pPlayer1);
     MEMN_vResizePlayerName(&Loc_ptr_pPlayer1);
 	char Loc_cPosition;
@@ -20,9 +20,12 @@ void MOSP_vHardMODE()
     char board[3][3];
     LOGC_vInitBoard(board);
 	board[2][2]='X';
-	OUT_vPrintBoard(board);
-	OUT_vPrintTurn(Loc_ptr_pPlayer1);
-    LOGC_vTakeInput(board,'O');
+	IOUT_vPrintBoard(board);
+	IOUT_vPrintTurn(Loc_ptr_pPlayer1);
+    if(IOUT_cTakeInput(board,'O')=='0')
+	{
+		return;
+	}
 	if(board[1][1]=='O')
 	{
 		board[0][0]='X';
@@ -30,9 +33,12 @@ void MOSP_vHardMODE()
 		{
 			if(flag)
 			{
-				OUT_vPrintBoard(board);
-				OUT_vPrintTurn(Loc_ptr_pPlayer1);
-				LOGC_vTakeInput(board,'O');
+				IOUT_vPrintBoard(board);
+				IOUT_vPrintTurn(Loc_ptr_pPlayer1);
+				if(IOUT_cTakeInput(board,'O')=='0')
+				{
+					return;
+				}
 			}
 			else
 			{
@@ -49,7 +55,7 @@ void MOSP_vHardMODE()
 			}
 			if(LOGC_Win(board))
 			{
-				OUT_vPrintBoard(board);
+				IOUT_vPrintBoard(board);
 				printf("HAHA I WON");
 				return;
 			}
@@ -84,23 +90,80 @@ void MOSP_vHardMODE()
 			Loc_cSecond='1';
 		}
 		LOGC_vPutInput(board,'X',Loc_cFirst);
-		OUT_vPrintBoard(board);
-		OUT_vPrintTurn(Loc_ptr_pPlayer1);
-		LOGC_vTakeInput(board,'O');
+		IOUT_vPrintBoard(board);
+		IOUT_vPrintTurn(Loc_ptr_pPlayer1);
+		if(IOUT_cTakeInput(board,'O')=='0')
+		{
+			return;
+		}
 		if(LOGC_cAlmostWinX(board)!='N')
 		{
 			LOGC_vPutInput(board,'X',LOGC_cAlmostWinX(board));
-			OUT_vPrintBoard(board);
+			IOUT_vPrintBoard(board);
 			printf("HAHA I WON");
 			return;
 		}
 		LOGC_vPutInput(board,'X',Loc_cSecond);
-		OUT_vPrintBoard(board);
-		OUT_vPrintTurn(Loc_ptr_pPlayer1);
-		LOGC_vTakeInput(board,'O');
+		IOUT_vPrintBoard(board);
+		IOUT_vPrintTurn(Loc_ptr_pPlayer1);
+		if(IOUT_cTakeInput(board,'O')=='0')
+		{
+			return;
+		}
 		LOGC_vPutInput(board,'X',LOGC_cAlmostWinX(board));
-		OUT_vPrintBoard(board);
+		IOUT_vPrintBoard(board);
 		printf("HAHA I WON");
 		return;
 	}
+}
+
+/*
+Player X
+System O
+*/
+void MOSP_vEasyMode()
+{
+	char *Loc_ptr_pPlayer1;
+    MEMN_vAllocatePlayerName(&Loc_ptr_pPlayer1);
+    printf("Enter Player1 Name:");
+    scanf(" %49[^\n]", Loc_ptr_pPlayer1);
+    MEMN_vResizePlayerName(&Loc_ptr_pPlayer1);
+	bool flag=True;
+    char board[3][3];
+    LOGC_vInitBoard(board);
+	for(int i=0;i<9;i++)
+	{
+		if(flag)
+		{
+			IOUT_vPrintBoard(board);
+			IOUT_vPrintTurn(Loc_ptr_pPlayer1);
+			if(IOUT_cTakeInput(board,'X')=='0')
+			{
+				return;
+			}
+		}
+		else
+		{
+			LOGC_vPutInput(board,'O',LOGC_cRandomPosition(board));
+		}
+		if(LOGC_Win(board))
+		{
+			if(flag)
+			{
+				IOUT_vPrintBoard(board);
+				printf("%s won",Loc_ptr_pPlayer1);
+				return;
+			}
+			else
+			{
+				IOUT_vPrintBoard(board);
+				printf("HAHA I WON");
+				return;
+			}
+		}
+		flag=!flag;
+	}
+	IOUT_vPrintBoard(board);
+	printf("DRAW");
+	return;
 }
